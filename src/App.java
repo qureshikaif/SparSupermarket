@@ -13,11 +13,15 @@ class Customer {
 
     }
     public void generateBill () {
-        
+
     }
 }
 class OnlineCustomer extends Customer {
     private String address;
+
+    public void onlineDiscount() {
+
+    }
 }
 class InStoreCustomer extends Customer {
     private String rewardPoints;
@@ -34,6 +38,9 @@ class SalesPerson {
     public void caclulateBill () {
 
     }
+}
+class Inventory {
+    
 }
 public class App {
     public static void main(String[] args) throws Exception {
