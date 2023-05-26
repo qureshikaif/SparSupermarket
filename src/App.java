@@ -2,12 +2,22 @@ class Customer {
     private String name;
     private String contact;
     private String cart;
+
+    public void addItems() {
+
+    }
+    public void removeItems() {
+
+    }
+    public void updateQuantity() {
+        
+    }
 }
-class OnlineCustomer {
+class OnlineCustomer extends Customer {
 
 }
-class InStoreCustomer {
-
+class InStoreCustomer extends Customer {
+    private String rewardPoints;
 }
 class Items {
 
