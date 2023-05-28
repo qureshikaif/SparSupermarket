@@ -99,18 +99,6 @@ class Inventory {
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Inventory inventory = new Inventory();
-        Items rice = new Items("Rice", 100, 400);
-        Items flour = new Items("Flour", 100, 150);
-        Items egg = new Items("Egg", 100, 25);
-        Items meat = new Items("Meat", 100, 650);
-        Items bread = new Items("Bread", 100, 80);
-        inventory.addItem(rice);
-        inventory.addItem(flour);
-        inventory.addItem(egg);
-        inventory.addItem(meat);
-        inventory.addItem(bread);
-        
-        inventory.showItem();
+
     }
 }
