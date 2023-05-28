@@ -64,6 +64,10 @@ class Items {
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
+    @Override
+    public String toString() {
+        return "Item Name: " + itemName + ", Quantity: " + quantity + ", Price: " + unitPrice;
+    }
 }
 
 class SalesPerson {
@@ -81,24 +85,32 @@ class Inventory {
         items = new ArrayList<>();
     }
 
+    public void showItem(){
+        for (Items item : items) {
+            System.out.println(item);
+        }
+    }
+
     public void addItem(Items item) {
         items.add(item);
     }
-
-    public void removeItem(Items item) {
-        items.remove(item);
-    }
-
-    public void checkItemQuantity(Items item) {
-        int quantity = item.getQuantity();
-        if (quantity < 50) {
-            System.out.println("Item " + item.getItemName() + " is running low. Quantity: " + quantity);
-        }
-    }
+    
 }
 
 public class App {
     public static void main(String[] args) throws Exception {
-
+        Inventory inventory = new Inventory();
+        Items rice = new Items("Rice", 100, 400);
+        Items flour = new Items("Flour", 100, 150);
+        Items egg = new Items("Egg", 100, 25);
+        Items meat = new Items("Meat", 100, 650);
+        Items bread = new Items("Bread", 100, 80);
+        inventory.addItem(rice);
+        inventory.addItem(flour);
+        inventory.addItem(egg);
+        inventory.addItem(meat);
+        inventory.addItem(bread);
+        
+        inventory.showItem();
     }
 }
