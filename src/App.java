@@ -104,6 +104,7 @@ public class App {
         System.out.println("1) Login as an admin\n2) Login as a customer\n3) Login as a Salesperson");
         int userChoice = input.nextInt();
         if(userChoice==1) {
+            System.out.println("Press 1 to show inventory\nPress 2 to add item\nPress 3 to show number of online customers\nPress 4 to show number of Instore customers");
 
         }
         else if(userChoice==2) {
@@ -111,13 +112,14 @@ public class App {
             int customerChoice = input.nextInt();
             if(customerChoice==1) {
                 System.out.println("1) Show all items available");
+
             }
             else if(customerChoice==2) {
                 System.out.println("1) Show all items available");
             }
         }
         else if(userChoice==3) {
-
+            System.out.println("Press 1 to show total customers\nPress 2 to show total bills collected");
         }
         else {
             System.out.println("Invalid option selected");
