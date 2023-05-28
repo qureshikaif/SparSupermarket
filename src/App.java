@@ -110,10 +110,10 @@ public class App {
             System.out.println("1) Online customer\n2) Instore customer");
             int customerChoice = input.nextInt();
             if(customerChoice==1) {
-
+                System.out.println("1) Show all items available");
             }
             else if(customerChoice==2) {
-                
+                System.out.println("1) Show all items available");
             }
         }
         else if(userChoice==3) {
