@@ -99,6 +99,28 @@ class Inventory {
 
 public class App {
     public static void main(String[] args) throws Exception {
-        
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to Spar Supermarket");
+        System.out.println("1) Login as an admin\n2) Login as a customer\n3) Login as a Salesperson");
+        int userChoice = input.nextInt();
+        if(userChoice==1) {
+
+        }
+        else if(userChoice==2) {
+            System.out.println("1) Online customer\n2) Instore customer");
+            int customerChoice = input.nextInt();
+            if(customerChoice==1) {
+
+            }
+            else if(customerChoice==2) {
+                
+            }
+        }
+        else if(userChoice==3) {
+
+        }
+        else {
+            System.out.println("Invalid option selected");
+        }
     }
 }
