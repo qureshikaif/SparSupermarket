@@ -25,6 +25,10 @@ class OnlineCustomer extends Customer {
 }
 class InStoreCustomer extends Customer {
     private String rewardPoints;
+
+    public void rewardPointsToDiscount () {
+
+    }
 }
 class Items {
     private String itemName;
@@ -40,10 +44,10 @@ class SalesPerson {
     }
 }
 class Inventory {
-    
+
 }
 public class App {
-    public static void main(String[] args) throws Exception {
-        
+    public static void main(String[] args)  {
+        System.out.println();
     }
 }
