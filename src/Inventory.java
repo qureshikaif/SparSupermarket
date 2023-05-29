@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 public class Inventory {
     private List<Items> items;
 
@@ -13,11 +14,17 @@ public class Inventory {
     public void removeItem(Items item) {
         items.remove(item);
     }
-    public void showItems() {
+    public void showInventory() {
         for (Items item : items) {
-            System.out.println("Item Name: " + item.getItemName() +
-                    ", Quantity: " + item.getQuantity() +
-                    ", Unit Price: " + item.getUnitPrice());
+            System.out.println("Item Name: " + item.getItemName() + ", Quantity: " + item.getQuantity() + ", Unit Price: " + item.getUnitPrice());
+        }
+    }
+    public void upgradeQuantity(String Name){
+        for (Items item : items) {
+            if (item.getItemName().equals(Name)) {
+                item.setQuantity(item.getQuantity() + 100);
+                break;
+            }
         }
     }
 

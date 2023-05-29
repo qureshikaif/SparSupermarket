@@ -1,7 +1,10 @@
 import java.util.*;
+
+import javax.lang.model.util.ElementScanner14;
 public class App {
     public static void main(String[] args) throws Exception {
         Inventory inventory = new Inventory();
+        Customer customer = new Customer();
         Items rice = new Items("Rice", 100, 400);
         Items flour = new Items("Flour", 100, 150);
         Items egg = new Items("Egg", 100, 25);
@@ -17,22 +20,66 @@ public class App {
         System.out.println("1) Login as an admin\n2) Login as a customer\n3) Login as a Salesperson");
         int userChoice = input.nextInt();
         if(userChoice==1) {
-            System.out.println("Press 1 to show inventory\nPress 2 to add item\nPress 3 to show number of online customers\nPress 4 to show number of Instore customers");
-            inventory.showItems();
+            System.out.println("Enter your login details:");
+            System.out.println("Username");
+            String username=input.next();
+            System.out.println("Password");
+            String password=input.next();
+            if(username.equals("admin") && password.equals("admin123")){
+                System.out.println("Press 1 to show inventory\nPress 2 to add item\nPress 3 to show number of online customers\nPress 4 to show number of Instore customers");
+                int choice = input.nextInt();
+                if(choice==1) {
+                    System.out.println("Showing Inventory");
+                    inventory.showInventory();
+                }
+                else if(choice==2) {
+                    System.out.println("Enter the name of the product");
+                    String item_name = input.next();
+                    inventory.upgradeQuantity(item_name);
+                }
+                else if(choice==3) {
 
+                }
+                else if(choice==4) {
+
+                }
+                else {
+                    System.out.println("Invalid Input");
+                }
+            }
+            else{
+                System.out.println("Invalid Login Credentials");
+            }
         }
         else if(userChoice==2) {
             System.out.println("1) Online customer\n2) Instore customer");
             int customerChoice = input.nextInt();
             if(customerChoice==1) {
-                System.out.println("1) Show all items available");
+                System.out.println("Enter your name:");
+                String onlineUname = input.next();
+                System.out.println("Enter your contact number:");
+                String onlineContact= input.next();
+                System.out.println("Enter your address:");
+                String onlineAddress = input.next();
+                System.out.println("All items available:");
+                customer.showItems();
 
             }
             else if(customerChoice==2) {
-                System.out.println("1) Show all items available");
+                System.out.println("Enter your name");
+                String instoreUname = input.next();
+                System.out.println("Enter your CNIC number:");
+                String instoreCnic = input.next();
+                System.out.println("All items available:");
+                customer.showItems();
             }
         }
         else if(userChoice==3) {
+            System.out.println("Enter your login details:");
+            System.out.println("Username");
+            String salesUsername=input.next();
+            System.out.println("Password");
+            String salesPassword = input.next();
             System.out.println("Press 1 to show total customers\nPress 2 to show total bills collected");
         }
         else {
