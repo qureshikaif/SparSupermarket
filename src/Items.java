@@ -8,7 +8,6 @@ public class Items {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
-
     public String getItemName() {
         return itemName;
     }

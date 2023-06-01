@@ -2,7 +2,8 @@ import java.util.*;
 public class App {
     public static void main(String[] args) throws Exception {
         Inventory inventory = new Inventory();
-        Customer customer = new Customer();
+        SalesPerson salesPerson = new SalesPerson();
+        InStoreCustomer customer = new InStoreCustomer();
         Items rice = new Items("Rice", 100, 400);
         Items flour = new Items("Flour", 100, 150);
         Items egg = new Items("Egg", 100, 25);
@@ -60,8 +61,16 @@ public class App {
                 System.out.println("Enter your address:");
                 String onlineAddress = input.next();
                 System.out.println("All items available:");
-                customer.showItems();
+                inventory.showItems();
+                System.out.println("Select an item to add to cart:");
+                String itemCart = input.next();
+                System.out.println("Enter the quantity");
+                int itemQuantity = input.nextInt();
+                System.out.println("Press Y to generate the bill");
+                String generateBillChoice = input.next();
+                if(generateBillChoice.equals("Y")) {
 
+                }
             }
             else if(customerChoice==2) {
                 System.out.println("Enter your name");
@@ -69,16 +78,34 @@ public class App {
                 System.out.println("Enter your CNIC number:");
                 String instoreCnic = input.next();
                 System.out.println("All items available:");
-                customer.showItems();
+                inventory.showItems();
+                System.out.println("Select an item to add to cart:");
+                String itemCart = input.next();
+                System.out.println("Enter the quantity");
+                int itemQuantity = input.nextInt();
+                customer.rewardPoints(itemQuantity);
+                System.out.println("Press Y to generate the bill");
+                String generateBillChoice = input.next();
+                if(generateBillChoice.equals("Y")) {
+                    salesPerson.generateBill(instoreUname,instoreCnic,itemCart,itemQuantity);
+                }
+                else {
+                    System.out.println(" ");
+                }
             }
         }
         else if(userChoice==3) {
             System.out.println("Enter your login details:");
             System.out.println("Username");
-            String salesUsername=input.next();
+            String salesPersonId=input.next();
             System.out.println("Password");
             String salesPassword = input.next();
-            System.out.println("Press 1 to show total customers\nPress 2 to show total bills collected");
+            if(salesPersonId.equals("sales") && salesPassword.equals("sales123")){
+                System.out.println("Press 1 to show total customers\nPress 2 to show total bills collected");
+            }
+            else{
+                System.out.println("Invalid Login Credentials");
+            }
         }
         else {
             System.out.println("Invalid option selected");

@@ -19,6 +19,11 @@ public class Inventory {
             System.out.println("Item Name: " + item.getItemName() + ", Quantity: " + item.getQuantity() + ", Unit Price: " + item.getUnitPrice());
         }
     }
+    public void showItems() {
+        for (Items item : items) {
+            System.out.println("Item Name: " + item.getItemName() + ", Unit Price: " + item.getUnitPrice());
+        }
+    }
     public void upgradeQuantity(String Name){
         for (Items item : items) {
             if (item.getItemName().equals(Name)) {
