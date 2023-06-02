@@ -24,10 +24,11 @@ public class App {
                 int userChoice = input.nextInt();
                 if(userChoice==1) {
                     System.out.println("Enter your login details:");
-                    System.out.println("Username");
+                    System.out.print("Username: ");
                     String username=input.next();
-                    System.out.println("Password");
+                    System.out.print("Password: ");
                     String password=input.next();
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(username.equals("admin") && password.equals("admin123")){
                         System.out.println("Press 1 to show inventory\nPress 2 to add item\nPress 3 to show number of Instore customers\nPress 4 to show number of Online customers");
                         int choice = input.nextInt();
@@ -57,6 +58,7 @@ public class App {
                 else if(userChoice==2) {
                     System.out.println("1) Online customer\n2) Instore customer");
                     int customerChoice = input.nextInt();
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(customerChoice==1) {
                         System.out.println("Enter your name:");
                         String onlineUname = input.next();
@@ -70,9 +72,10 @@ public class App {
                         int itemCart = input.nextInt();
                         System.out.println("Enter the quantity");
                         int itemQuantity = input.nextInt();
-                        System.out.println("Press Y to generate the bill");
+                        System.out.println("Press Y to generate the bill\nN to go back to the Main Menu");
                         String generateBillChoice = input.next();
-                        if(generateBillChoice.equals("Y")) {
+                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
+                        if(generateBillChoice.equals("Y") || generateBillChoice.equals("y")) {
                             onlineCustomer.generateBill(onlineUname,onlineContact, onlineAddress,inventory.items.get(itemCart-1).getItemName() ,itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
                         }
                     }
@@ -88,10 +91,10 @@ public class App {
                         System.out.println("Enter the quantity");
                         int itemQuantity = input.nextInt();
                         instoreCustomer.rewardPoints(itemQuantity);
-                        System.out.println("Press Y to generate the bill");
+                        System.out.println("Press Y to generate the bill\nN to go back to the Main Menu");
                         String generateBillChoice = input.next();
                         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
-                        if(generateBillChoice.equals("Y")) {
+                        if(generateBillChoice.equals("Y") || generateBillChoice.equals("y")) {
                             salesPerson.generateBill(instoreUname,instoreCnic,inventory.items.get(itemCart-1).getItemName(),itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
                             inventory.items.get(itemCart-1).setQuantity(inventory.items.get(itemCart-1).getQuantity()-itemQuantity);
                         }
@@ -102,11 +105,11 @@ public class App {
                 }
                 else if(userChoice==3) {
                     System.out.println("Enter your login details:");
-                    System.out.println("Username");
+                    System.out.print("Salesperson ID: ");
                     String salesPersonId=input.next();
-                    System.out.println("Password");
+                    System.out.print("Password: ");
                     String salesPassword = input.next();
-                    if(salesPersonId.equals("sales") && salesPassword.equals("sales123")){
+                    if(salesPersonId.equals("E5573-8561") && salesPassword.equals("sales123")){
                         System.out.println("Press 1 to show total customers\nPress 2 to show total bills collected");
                     }
                     else{
