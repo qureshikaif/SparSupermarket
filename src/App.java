@@ -3,7 +3,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         Inventory inventory = new Inventory();
         SalesPerson salesPerson = new SalesPerson();
-        InStoreCustomer customer = new InStoreCustomer();
+        InStoreCustomer instoreCustomer = new InStoreCustomer();
+        OnlineCustomer onlineCustomer = new OnlineCustomer();
         Items rice = new Items("Rice", 100, 400);
         Items flour = new Items("Flour", 100, 150);
         Items egg = new Items("Egg", 100, 25);
@@ -38,7 +39,7 @@ public class App {
                         inventory.upgradeQuantity(item_name);
                     }
                     else if(choice==3) {
-
+                        System.out.println("Total Instore customers today: " + salesPerson.getTotalInstoreCustomers());
                     }
                     else if(choice==4) {
 
@@ -64,13 +65,13 @@ public class App {
                     System.out.println("All items available:");
                     inventory.showItems();
                     System.out.println("Select an item to add to cart:");
-                    String itemCart = input.next();
+                    int itemCart = input.nextInt();
                     System.out.println("Enter the quantity");
                     int itemQuantity = input.nextInt();
                     System.out.println("Press Y to generate the bill");
                     String generateBillChoice = input.next();
                     if(generateBillChoice.equals("Y")) {
-
+                        onlineCustomer.generateBill(onlineUname,onlineContact, onlineAddress,inventory.items.get(itemCart-1).getItemName() ,itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
                     }
                 }
                 else if(customerChoice==2) {
@@ -84,11 +85,13 @@ public class App {
                     int itemCart = input.nextInt();
                     System.out.println("Enter the quantity");
                     int itemQuantity = input.nextInt();
-                    customer.rewardPoints(itemQuantity);
+                    instoreCustomer.rewardPoints(itemQuantity);
                     System.out.println("Press Y to generate the bill");
                     String generateBillChoice = input.next();
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(generateBillChoice.equals("Y")) {
-                        salesPerson.generateBill(instoreUname,instoreCnic,itemCart,itemQuantity,items.get(itemCart-1).getUnitPrice());
+                        salesPerson.generateBill(instoreUname,instoreCnic,inventory.items.get(itemCart-1).getItemName(),itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
+                        inventory.items.get(itemCart-1).setQuantity(inventory.items.get(itemCart-1).getQuantity()-itemQuantity);
                     }
                     else {
                         System.out.println(" ");
