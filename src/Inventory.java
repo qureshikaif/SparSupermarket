@@ -1,7 +1,6 @@
 import java.util.*;
-import java.io.*;
 public class Inventory {
-    private List<Items> items;
+    private ArrayList<Items> items;
 
     public Inventory() {
         items = new ArrayList<>();
