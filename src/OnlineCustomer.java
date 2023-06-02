@@ -13,9 +13,8 @@ public class OnlineCustomer extends Customer{
         System.out.println("Item: " + itemName);
         System.out.println("Item Quantity: " + itemQuantity);
         System.out.println("Your are getting 5% discount because of online shopping. Thanks for being our valuable customer. ");
-        System.out.println("Your total bill is " + totalBill + " including GST");
+        System.out.println("Your total bill is " + totalBill*0.05 + " including GST");
         totalOnlineCustomers++;
-
     }
     public int getTotalOnlineCustomers () {
         return totalOnlineCustomers;
