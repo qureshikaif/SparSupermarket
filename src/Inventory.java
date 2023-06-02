@@ -9,13 +9,17 @@ public class Inventory {
         items.remove(item);
     }
     public void showInventory() {
+        int counter1 = 1;
         for (Items item : items) {
-            System.out.println("Item Name: " + item.getItemName() + ", Quantity: " + item.getQuantity() + ", Unit Price: " + item.getUnitPrice());
+            System.out.println(counter1 + ". Item Name: " + item.getItemName() + ", Quantity: " + item.getQuantity() + ", Unit Price: " + item.getUnitPrice());
+            counter1++;
         }
     }
     public void showItems() {
+        int counter2 = 1;
         for (Items item : items) {
-            System.out.println("Item Name: " + item.getItemName() + ", Unit Price: " + item.getUnitPrice());
+            System.out.println(counter2 + ". Item Name: " + item.getItemName() + ", Unit Price: " + item.getUnitPrice());
+            counter2++;
         }
     }
     public void upgradeQuantity(String Name){
