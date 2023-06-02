@@ -61,16 +61,21 @@ public class App {
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(customerChoice==1) {
                         System.out.println("Enter your name:");
+                        input.nextLine();
                         String onlineUname = input.next();
                         System.out.println("Enter your contact number:");
+                        input.nextLine();
                         String onlineContact= input.next();
                         System.out.println("Enter your address:");
+                        input.nextLine();
                         String onlineAddress = input.next();
                         System.out.println("All items available:");
                         inventory.showItems();
                         System.out.println("Select an item to add to cart:");
+                        input.nextLine();
                         int itemCart = input.nextInt();
                         System.out.println("Enter the quantity");
+                        input.nextLine();
                         int itemQuantity = input.nextInt();
                         System.out.println("Press Y to generate the bill\nN to go back to the Main Menu");
                         String generateBillChoice = input.next();
@@ -81,8 +86,10 @@ public class App {
                     }
                     else if(customerChoice==2) {
                         System.out.println("Enter your name");
+                        input.nextLine();
                         String instoreUname = input.next();
                         System.out.println("Enter your CNIC number:");
+                        input.nextLine();
                         String instoreCnic = input.next();
                         System.out.println("All items available:");
                         inventory.showItems();
