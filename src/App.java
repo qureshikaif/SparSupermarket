@@ -31,7 +31,7 @@ public class App {
                     String password=input.next();
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(username.equals("admin") && password.equals("admin123")){
-                        System.out.println("Press 1 to show inventory\nPress 2 to increase quantity\nPress 3 to show number of Instore customers\nPress 4 to show number of Online customers\nPress 5 to show total sales in PKR");
+                        System.out.println("Press 1 to show inventory\nPress 2 to increase quantity\nPress 3 to show number of Instore customers\nPress 4 to show number of Online customers\nPress 5 to show total customers\nPress 6 to show total sales in PKR");
                         int choice = input.nextInt();
                         if(choice==1) {
                             System.out.println("Showing Inventory");
@@ -48,7 +48,10 @@ public class App {
                         else if(choice==4) {
                             System.out.println("Total Online customers today: " + onlineCustomer.getTotalOnlineCustomers());
                         }
-                        else if(choice==5) {
+                        else if (choice==5) {
+                            System.out.println("Total customers today: " + onlineCustomer.getTotalCustomers());
+                        }
+                        else if(choice==6) {
                             System.out.println("Your total sales today: " + (onlineCustomer.getTotalBill()+salesPerson.getTotalBill()));
                         }
                         else {
