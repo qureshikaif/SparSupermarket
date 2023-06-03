@@ -16,13 +16,14 @@ public class App {
         inventory.addItem(egg);
         inventory.addItem(meat);
         inventory.addItem(bread);
+        int userChoice = 0;
         try (Scanner input = new Scanner(System.in)) {
-            while(true){
+            while(userChoice!=4){
                 System.out.println("\n------------------------------");
                 System.out.println("Welcome to Spar Supermarket");
                 System.out.println("------------------------------\n");
-                System.out.println("1) Login as an admin\n2) Login as a customer\n3) Login as a Salesperson");
-                int userChoice = input.nextInt();
+                System.out.println("1. Login as an admin\n2. Login as a customer\n3. Login as a Salesperson\n4. Exit");
+                userChoice = input.nextInt();
                 if(userChoice==1) {
                     System.out.println("Enter your login details:");
                     System.out.print("Username: ");
@@ -140,6 +141,9 @@ public class App {
                     else{
                         System.out.println("Invalid Login Credentials");
                     }
+                }
+                else if(userChoice ==4) {
+                    System.out.println("Exiting Program.....");
                 }
                 else {
                     System.out.println("Invalid option selected");
