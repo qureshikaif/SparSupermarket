@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class App {
     public static void main(String[] args) throws Exception {
         Inventory inventory = new Inventory();
@@ -61,47 +62,47 @@ public class App {
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(customerChoice==1) {
                         System.out.println("Enter your name:");
-                        input.nextLine();
-                        String onlineUname = input.next();
+                        input.nextLine(); // Consume the newline character
+                        String onlineUname = input.nextLine();
                         System.out.println("Enter your contact number:");
-                        input.nextLine();
-                        String onlineContact= input.next();
+                        String onlineContact= input.nextLine();
                         System.out.println("Enter your address:");
-                        input.nextLine();
-                        String onlineAddress = input.next();
+                        String onlineAddress = input.nextLine();
                         System.out.println("All items available:");
                         inventory.showItems();
                         System.out.println("Select an item to add to cart:");
-                        input.nextLine();
                         int itemCart = input.nextInt();
+                        input.nextLine(); // Consume the newline character
                         System.out.println("Enter the quantity");
-                        input.nextLine();
                         int itemQuantity = input.nextInt();
+                        input.nextLine(); // Consume the newline character
                         System.out.println("Press Y to generate the bill\nN to go back to the Main Menu");
                         String generateBillChoice = input.next();
                         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
-                        if(generateBillChoice.equals("Y") || generateBillChoice.equals("y")) {
+                        if(generateBillChoice.equalsIgnoreCase("Y")) {
                             onlineCustomer.generateBill(onlineUname,onlineContact, onlineAddress,inventory.items.get(itemCart-1).getItemName() ,itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
+                            inventory.items.get(itemCart-1).setQuantity(inventory.items.get(itemCart-1).getQuantity()-itemQuantity);
                         }
                     }
                     else if(customerChoice==2) {
                         System.out.println("Enter your name");
-                        input.nextLine();
-                        String instoreUname = input.next();
+                        input.nextLine(); // Consume the newline character
+                        String instoreUname = input.nextLine();
                         System.out.println("Enter your CNIC number:");
-                        input.nextLine();
-                        String instoreCnic = input.next();
+                        String instoreCnic = input.nextLine();
                         System.out.println("All items available:");
                         inventory.showItems();
                         System.out.println("Select an item to add to cart:");
                         int itemCart = input.nextInt();
+                        input.nextLine(); // Consume the newline character
                         System.out.println("Enter the quantity");
                         int itemQuantity = input.nextInt();
+                        input.nextLine(); // Consume the newline character
                         instoreCustomer.rewardPoints(itemQuantity);
                         System.out.println("Press Y to generate the bill\nN to go back to the Main Menu");
                         String generateBillChoice = input.next();
                         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
-                        if(generateBillChoice.equals("Y") || generateBillChoice.equals("y")) {
+                        if(generateBillChoice.equalsIgnoreCase("Y")) {
                             salesPerson.generateBill(instoreUname,instoreCnic,inventory.items.get(itemCart-1).getItemName(),itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
                             inventory.items.get(itemCart-1).setQuantity(inventory.items.get(itemCart-1).getQuantity()-itemQuantity);
                         }
@@ -118,6 +119,13 @@ public class App {
                     String salesPassword = input.next();
                     if(salesPersonId.equals("E5573-8561") && salesPassword.equals("sales123")){
                         System.out.println("Press 1 to show total customers\nPress 2 to show total bills collected");
+                        int saleschoice = input.nextInt();
+                        if(saleschoice == 1){
+                            System.out.println("Total Instore customers today: " + salesPerson.getTotalInstoreCustomers());
+                        }
+                        else if(saleschoice == 2){
+                            System.out.println("Total Instore Bill today: " + salesPerson.getTotalBillCollected());
+                        }
                     }
                     else{
                         System.out.println("Invalid Login Credentials");
