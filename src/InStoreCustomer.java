@@ -1,5 +1,13 @@
 public class InStoreCustomer extends Customer {
+    private String cnic;
     private int rewardPoints;
+
+    public String getCnic() {
+        return cnic;
+    }
+    public void setCnic(String cnic) {
+        this.cnic = cnic;
+    }
     public void rewardPoints (int rewardPoints) {
         this.rewardPoints = rewardPoints;
     }

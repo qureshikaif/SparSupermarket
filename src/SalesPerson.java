@@ -1,20 +1,17 @@
 import java.util.Scanner;
 public class SalesPerson {
     Scanner input = new Scanner(System.in);
-    private String salesPersonId="E5573-8561";
+    InStoreCustomer instoreCustomer = new InStoreCustomer();
+    private final String salesPersonId="E5573-8561";
     private double totalBill;
     private double totalBillGst;
-    private double totalInstoreBill = 0;
-    private double totalInstoreBillGst = 0;
     private int totalInstoreCustomers;
-    InStoreCustomer instoreCustomer = new InStoreCustomer();
+    
     public void generateBill(String instoreUname,String instoreCnic,String itemCart,int itemQuantity, double unitPrice) {
         instoreCustomer.rewardPoints(itemQuantity);
         totalBill = itemQuantity*unitPrice;
         totalBillGst = totalBill*0.15;
         totalBill = totalBillGst + totalBill;
-        totalInstoreBill = totalInstoreBill + totalBill;
-        totalInstoreBillGst = totalInstoreBillGst + totalInstoreBillGst;
         System.out.println("--------------------------------");
         System.out.println("Your bill receipt: ");
         System.out.println("Salesperson ID: " + salesPersonId);
@@ -34,17 +31,14 @@ public class SalesPerson {
             System.out.println("--------------------------------");
         }
         totalInstoreCustomers++;
+
     }
     public int getTotalInstoreCustomers () {
         return totalInstoreCustomers;
     }
 
-    public double getTotalBillCollected(){
-        return totalInstoreBill;
+    public double getTotalBill(){
+        return totalBill;
     }
     
-    public double getTotalBillGSTCollected(){
-        return totalInstoreBillGst;
-    }
-
 }

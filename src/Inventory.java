@@ -24,17 +24,24 @@ public class Inventory {
     }
     public void upgradeQuantity(String Name){
         for (Items item : items) {
-            if (item.getItemName().equals(Name)) {
+            if (item.getItemName().equalsIgnoreCase(Name)) {
                 item.setQuantity(item.getQuantity() + 100);
+                System.out.println("100 quantity added.");
                 break;
             }
-        }
+            if(!item.getItemName().equalsIgnoreCase(Name)) {
+                System.out.println("No item found in inventory with name: " + Name);
+                break;
+            }    
+        }    
     }
 
     public void checkItemQuantity(Items item) {
         int quantity = item.getQuantity();
         if (quantity < 50) {
             System.out.println("Item " + item.getItemName() + " is running low. Quantity: " + quantity);
+            System.out.println("Exiting Program......");
+            System.exit(0);
         }
     }
 }

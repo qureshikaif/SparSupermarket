@@ -31,7 +31,7 @@ public class App {
                     String password=input.next();
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(username.equals("admin") && password.equals("admin123")){
-                        System.out.println("Press 1 to show inventory\nPress 2 to add item\nPress 3 to show number of Instore customers\nPress 4 to show number of Online customers");
+                        System.out.println("Press 1 to show inventory\nPress 2 to increase quantity\nPress 3 to show number of Instore customers\nPress 4 to show number of Online customers\nPress 5 to show total sales in PKR");
                         int choice = input.nextInt();
                         if(choice==1) {
                             System.out.println("Showing Inventory");
@@ -48,11 +48,14 @@ public class App {
                         else if(choice==4) {
                             System.out.println("Total Online customers today: " + onlineCustomer.getTotalOnlineCustomers());
                         }
+                        else if(choice==5) {
+                            System.out.println("Your total sales today: " + (onlineCustomer.getTotalBill()+salesPerson.getTotalBill()));
+                        }
                         else {
                             System.out.println("Invalid Input");
                         }
                     }
-                    else{
+                    else {
                         System.out.println("Invalid Login Credentials");
                     }
                 }
@@ -63,48 +66,52 @@ public class App {
                     if(customerChoice==1) {
                         System.out.println("Enter your name:");
                         input.nextLine(); // Consume the newline character
-                        String onlineUname = input.nextLine();
+                        onlineCustomer.setName(input.nextLine());
                         System.out.println("Enter your contact number:");
-                        String onlineContact= input.nextLine();
+                        onlineCustomer.setContact(input.nextLine());
                         System.out.println("Enter your address:");
-                        String onlineAddress = input.nextLine();
+                        onlineCustomer.setAddress(input.nextLine());
                         System.out.println("All items available:");
                         inventory.showItems();
                         System.out.println("Select an item to add to cart:");
                         int itemCart = input.nextInt();
                         input.nextLine(); // Consume the newline character
+                        inventory.checkItemQuantity(inventory.items.get(itemCart-1));
                         System.out.println("Enter the quantity");
                         int itemQuantity = input.nextInt();
                         input.nextLine(); // Consume the newline character
-                        System.out.println("Press Y to generate the bill\nN to go back to the Main Menu");
+                        System.out.println("Press Y to generate the bill\nPress N to go back to the Main Menu");
                         String generateBillChoice = input.next();
                         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                         if(generateBillChoice.equalsIgnoreCase("Y")) {
-                            onlineCustomer.generateBill(onlineUname,onlineContact, onlineAddress,inventory.items.get(itemCart-1).getItemName() ,itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
+                            onlineCustomer.generateBill(onlineCustomer.getName(),onlineCustomer.getContact(), onlineCustomer.getAddress(),inventory.items.get(itemCart-1).getItemName() ,itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
                             inventory.items.get(itemCart-1).setQuantity(inventory.items.get(itemCart-1).getQuantity()-itemQuantity);
+                            onlineCustomer.increaseTotalCustomers();
                         }
                     }
                     else if(customerChoice==2) {
                         System.out.println("Enter your name");
                         input.nextLine(); // Consume the newline character
-                        String instoreUname = input.nextLine();
+                        instoreCustomer.setName(input.nextLine());
                         System.out.println("Enter your CNIC number:");
-                        String instoreCnic = input.nextLine();
+                        instoreCustomer.setCnic(input.nextLine());
                         System.out.println("All items available:");
                         inventory.showItems();
                         System.out.println("Select an item to add to cart:");
                         int itemCart = input.nextInt();
                         input.nextLine(); // Consume the newline character
+                        inventory.checkItemQuantity(inventory.items.get(itemCart-1));
                         System.out.println("Enter the quantity");
                         int itemQuantity = input.nextInt();
                         input.nextLine(); // Consume the newline character
                         instoreCustomer.rewardPoints(itemQuantity);
-                        System.out.println("Press Y to generate the bill\nN to go back to the Main Menu");
+                        System.out.println("Press Y to generate the bill\nPress N to go back to the Main Menu");
                         String generateBillChoice = input.next();
                         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                         if(generateBillChoice.equalsIgnoreCase("Y")) {
-                            salesPerson.generateBill(instoreUname,instoreCnic,inventory.items.get(itemCart-1).getItemName(),itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
+                            salesPerson.generateBill(instoreCustomer.getName(),instoreCustomer.getCnic(),inventory.items.get(itemCart-1).getItemName(),itemQuantity,inventory.items.get(itemCart-1).getUnitPrice());
                             inventory.items.get(itemCart-1).setQuantity(inventory.items.get(itemCart-1).getQuantity()-itemQuantity);
+                            instoreCustomer.increaseTotalCustomers();
                         }
                         else {
                             System.out.println(" ");
@@ -124,7 +131,7 @@ public class App {
                             System.out.println("Total Instore customers today: " + salesPerson.getTotalInstoreCustomers());
                         }
                         else if(saleschoice == 2){
-                            System.out.println("Total Instore Bill today: " + salesPerson.getTotalBillCollected());
+                            System.out.println("Total Instore Bill today: " + salesPerson.getTotalBill());
                         }
                     }
                     else{

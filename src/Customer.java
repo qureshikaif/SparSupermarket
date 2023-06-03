@@ -1,21 +1,18 @@
-import java.util.*;
-public class Customer {
-    // Add an ArrayList to store the items in the customer's cart
-    protected ArrayList<Items> cart = new ArrayList<>();
 
-    public void addItemToCart(Items item) {
-        cart.add(item);
+public abstract class Customer {
+    private String name;
+    private int totalCustomers=0;
+    public String getName() {
+        return name;
     }
-
-    public void removeItemFromCart(Items item) {
-        cart.remove(item);
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public void upgradeItemQuantity(Items item, int newQuantity) {
-        item.setQuantity(newQuantity);
+    public int getTotalCustomers () {
+        return totalCustomers;
     }
-
-    public ArrayList<Items> getCart() {
-        return cart;
+    public void increaseTotalCustomers() {
+        totalCustomers++;
     }
 }
+
