@@ -12,7 +12,7 @@ public abstract class Customer {
         return totalCustomers;
     }
     public void increaseTotalCustomers() {
-        totalCustomers++;
+        this.totalCustomers++;
     }
 }
 
