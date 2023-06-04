@@ -1,5 +1,5 @@
 
-public abstract class Customer {
+public class Customer {
     private String name;
     private int totalCustomers=0;
     public String getName() {
