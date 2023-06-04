@@ -5,6 +5,7 @@ public class SalesPerson {
     private final String salesPersonId="E5573-8561";
     private double totalBill;
     private double totalBillGst;
+    private double totalBillCollected = 0;
     private int totalInstoreCustomers;
     
     public void generateBill(String instoreUname,String instoreCnic,String itemCart,int itemQuantity, double unitPrice) {
@@ -12,6 +13,7 @@ public class SalesPerson {
         totalBill = itemQuantity*unitPrice;
         totalBillGst = totalBill*0.15;
         totalBill = totalBillGst + totalBill;
+        totalBillCollected = totalBillCollected + totalBill;
         System.out.println("--------------------------------");
         System.out.println("Your bill receipt: ");
         System.out.println("Salesperson ID: " + salesPersonId);
@@ -37,8 +39,8 @@ public class SalesPerson {
         return totalInstoreCustomers;
     }
 
-    public double getTotalBill(){
-        return totalBill;
+    public double gettotalBillCollected(){
+        return totalBillCollected;
     }
     
 }

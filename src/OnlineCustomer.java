@@ -5,12 +5,14 @@ public class OnlineCustomer extends Customer{
     private double totalBillGst;
     private int totalOnlineCustomers;
     private double totalDiscount;
+    private double totalBillCollected = 0;
     public void generateBill(String onlineUname,String onlineContact,String onlineAddress,String itemName, int itemQuantity,double unitPrice) {
         totalBill = itemQuantity*unitPrice;
         totalBillGst = totalBill*0.15;
         totalDiscount = totalBill*0.05;
         totalBill = totalBillGst + totalBill;
         totalBill = totalBill-totalDiscount;
+        totalBillCollected = totalBillCollected + totalBill;
         System.out.println("--------------------------------");
         System.out.println("Your bill receipt: ");
         System.out.println("Customer name: " + onlineUname);
@@ -39,7 +41,8 @@ public class OnlineCustomer extends Customer{
     public int getTotalOnlineCustomers () {
         return totalOnlineCustomers;
     }
-    public double getTotalBill() {
-        return totalBill;
+    public double gettotalBillCollected() {
+        return totalBillCollected;
+        
     }
 }

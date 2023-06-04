@@ -36,7 +36,7 @@ public class App {
                         int choice = input.nextInt();
                         if(choice==1) {
                             System.out.println("Showing Inventory");
-                            inventory.showInventory();
+                            inventory.showItems(true);
                         }
                         else if(choice==2) {
                             System.out.println("Enter the name of the product");
@@ -53,7 +53,7 @@ public class App {
                             System.out.println("Total customers today: " + onlineCustomer.getTotalCustomers());
                         }
                         else if(choice==6) {
-                            System.out.println("Your total sales today: " + (onlineCustomer.getTotalBill()+salesPerson.getTotalBill()));
+                            System.out.println("Your total sales today: " + (onlineCustomer.gettotalBillCollected()+salesPerson.gettotalBillCollected()));
                         }
                         else {
                             System.out.println("Invalid Input");
@@ -76,7 +76,7 @@ public class App {
                         System.out.println("Enter your address:");
                         onlineCustomer.setAddress(input.nextLine());
                         System.out.println("All items available:");
-                        inventory.showItems();
+                        inventory.showItems(false);
                         System.out.println("Select an item to add to cart:");
                         int itemCart = input.nextInt();
                         input.nextLine(); // Consume the newline character
@@ -100,7 +100,7 @@ public class App {
                         System.out.println("Enter your CNIC number:");
                         instoreCustomer.setCnic(input.nextLine());
                         System.out.println("All items available:");
-                        inventory.showItems();
+                        inventory.showItems(false);
                         System.out.println("Select an item to add to cart:");
                         int itemCart = input.nextInt();
                         input.nextLine(); // Consume the newline character
@@ -128,6 +128,7 @@ public class App {
                     String salesPersonId=input.next();
                     System.out.print("Password: ");
                     String salesPassword = input.next();
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
                     if(salesPersonId.equals("E5573-8561") && salesPassword.equals("sales123")){
                         System.out.println("Press 1 to show total customers\nPress 2 to show total bills collected");
                         int saleschoice = input.nextInt();
@@ -135,7 +136,7 @@ public class App {
                             System.out.println("Total Instore customers today: " + salesPerson.getTotalInstoreCustomers());
                         }
                         else if(saleschoice == 2){
-                            System.out.println("Total Instore Bill today: " + salesPerson.getTotalBill());
+                            System.out.println("Total Instore Bill today: " + salesPerson.gettotalBillCollected());
                         }
                     }
                     else{

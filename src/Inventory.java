@@ -1,7 +1,6 @@
 import java.util.*;
 public class Inventory {
     ArrayList<Items> items = new ArrayList<>();
-    private int counter=1; 
     public void addItem(Items item) {
         items.add(item);
     }
@@ -9,19 +8,16 @@ public class Inventory {
     public void removeItem(Items item) {
         items.remove(item);
     }
-    public void showInventory() {
+    public void showItems(boolean includeQuantity) {
+        int counter = 1;
         for (Items item : items) {
-            System.out.println(counter + ". Item Name: " + item.getItemName() + ", Quantity: " + item.getQuantity() + ", Unit Price: " + item.getUnitPrice());
+            System.out.print(counter + ". Item Name: " + item.getItemName());
+            if (includeQuantity) {
+                System.out.print(", Quantity: " + item.getQuantity());
+            }
+            System.out.println(", Unit Price: " + item.getUnitPrice());
             counter++;
         }
-        counter = 0;
-    }
-    public void showItems() {
-        for (Items item : items) {
-            System.out.println(counter + ". Item Name: " + item.getItemName() + ", Unit Price: " + item.getUnitPrice());
-            counter++;
-        }
-        counter = 0;
     }
     public void upgradeQuantity(String Name){
         boolean found = false;
