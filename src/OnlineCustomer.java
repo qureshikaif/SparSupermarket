@@ -24,7 +24,6 @@ public class OnlineCustomer extends Customer{
         System.out.println("Your total bill is " + totalBill + " including GST");
         System.out.println("--------------------------------");
         totalOnlineCustomers++;
-        increaseTotalCustomers();
     }
     public String getAddress () {
         return address;

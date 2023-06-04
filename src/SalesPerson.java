@@ -24,7 +24,7 @@ public class SalesPerson {
         System.out.println("You have " + instoreCustomer.getRewardPoints() + " reward points. Do you want to avail them now?\nPress Y to avail the discount\nPress N to cancel");
         String userChoice = input.next();
         if(userChoice.equals("Y") || userChoice.equals("y")) {
-            System.out.println("Reward points availed. Your final bill after applying discount is " + (totalBill + instoreCustomer.rewardPointsToDiscount(totalBill)));
+            System.out.println("Reward points availed. Your final bill after applying discount is " + (totalBill - instoreCustomer.rewardPointsToDiscount(totalBill)));
             System.out.println("--------------------------------");
         }
         else {
