@@ -4,10 +4,6 @@ public class Inventory {
     public void addItem(Items item) {
         items.add(item);
     }
-
-    public void removeItem(Items item) {
-        items.remove(item);
-    }
     public void showItems(boolean includeQuantity) {
         int counter = 1;
         for (Items item : items) {
